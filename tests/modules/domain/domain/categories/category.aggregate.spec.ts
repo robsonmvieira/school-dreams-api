@@ -1,5 +1,5 @@
-import { UniqueEntityID } from '../../../../../src/modules/domain/core/based-classes'
-import { CategoryAggregate } from '../../../../../src/modules/domain/admin/categories/entities'
+import { CategoryAggregate } from '@domain/admin/categories/entities'
+import { UniqueEntityID } from '@domain/core/based-classes'
 
 describe('Category Aggregate', () => {
   it('Should create a Category Agreggate', () => {

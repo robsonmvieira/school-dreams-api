@@ -1,9 +1,9 @@
 import {
   AggregateRoot,
-  Result,
   UniqueEntityID,
+  Result,
   ErrorMessage
-} from '../../../core/based-classes'
+} from '@domain/core/based-classes'
 
 export type PermissionAggregateType = {
   title: string

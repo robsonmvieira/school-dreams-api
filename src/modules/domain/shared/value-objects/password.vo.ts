@@ -1,5 +1,5 @@
-import { ValueObject } from '../../core/based-classes/value-object'
-import { Result } from '../../core/based-classes/result'
+import { ValueObject, Result } from '@domain/core/based-classes'
+
 export type PasswordValueObjectProps = {
   value: string
 }
