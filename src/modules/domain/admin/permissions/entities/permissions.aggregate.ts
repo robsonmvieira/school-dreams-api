@@ -1,7 +1,8 @@
 import {
   AggregateRoot,
   Result,
-  UniqueEntityID
+  UniqueEntityID,
+  ErrorMessage
 } from '../../../core/based-classes'
 
 export type PermissionAggregateType = {
@@ -24,7 +25,9 @@ export class PermissionAggregate extends AggregateRoot<PermissionAggregateType> 
 
     if (!hasCorrectNameSize) {
       return Result.fail<PermissionAggregate>(
-        `Permission title must have minimal of ${this.minimalSizeTitleName} letters`
+        ErrorMessage.permissionMinimalSizeErrorMessage(
+          this.minimalSizeTitleName
+        )
       )
     }
     return Result.ok<PermissionAggregate>(new PermissionAggregate(props, id))
