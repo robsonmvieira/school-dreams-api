@@ -1,4 +1,4 @@
 export const ErrorMessage = {
-  permissionMinimalSizeErrorMessage: (size: number): string =>
-    `Permission title must have minimal of ${size} letters`
+  minimalSizeErrorMessage: (entity: string, size: number): string =>
+    `${entity} title must have minimal of ${size} letters`
 }
