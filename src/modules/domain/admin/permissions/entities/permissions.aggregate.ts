@@ -25,7 +25,8 @@ export class PermissionAggregate extends AggregateRoot<PermissionAggregateType> 
 
     if (!hasCorrectNameSize) {
       return Result.fail<PermissionAggregate>(
-        ErrorMessage.permissionMinimalSizeErrorMessage(
+        ErrorMessage.minimalSizeErrorMessage(
+          'Permission',
           this.minimalSizeTitleName
         )
       )
