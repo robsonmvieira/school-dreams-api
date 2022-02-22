@@ -1,7 +1,8 @@
 import {
   UniqueEntityID,
   AggregateRoot,
-  Result
+  Result,
+  ErrorMessage
 } from '../../../core/based-classes'
 
 export type CategoryAgregateProps = {
@@ -34,7 +35,10 @@ export class CategoryAggregate extends AggregateRoot<CategoryAgregateProps> {
 
     if (!minSize) {
       return Result.fail<CategoryAggregate>(
-        `Category title must have minimal of ${this.minimalSizeTitleName} letters`
+        ErrorMessage.minimalSizeErrorMessage(
+          'Category',
+          this.minimalSizeTitleName
+        )
       )
     }
     return Result.ok<CategoryAggregate>(new CategoryAggregate(props, id))
