@@ -41,6 +41,6 @@ export class CategoryAggregate extends AggregateRoot<CategoryAgregateProps> {
   }
 
   private static minLength(minimalSize: number, title: string): boolean {
-    return title.trim().length >= this.minimalSizeTitleName
+    return title.trim().length >= minimalSize
   }
 }
