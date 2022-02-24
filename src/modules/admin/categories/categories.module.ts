@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common'
-import { CategoriesService } from './categories.service'
 import { CategoriesResolver } from './categories.resolver'
+import { CategoriesApiService, CategoriesService } from './services'
 
 @Module({
-  providers: [CategoriesResolver, CategoriesService]
+  providers: [CategoriesResolver, CategoriesApiService, CategoriesService]
 })
 export class CategoriesModule {}
