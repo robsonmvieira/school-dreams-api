@@ -1,27 +1,39 @@
-import { Injectable } from '@nestjs/common'
-// import { CreateCategoryInput } from './dto/create-category.input'
-// import { UpdateCategoryInput } from './dto/update-category.input'
+import { Inject, Injectable } from '@nestjs/common'
+import { Category } from '@modules/admin/categories/entities'
+import { CategoryQueryProps, CategoryRepositoryPort } from '../database'
 
 @Injectable()
 export class CategoriesApiService {
-  constructor() {}
-  create(createCategoryInput: CreateCategoryInput) {
-    return 'This action adds a new category'
+  constructor(
+    @Inject('CategoryRepositoryPort')
+    private readonly repo: CategoryRepositoryPort
+  ) {}
+  async create(createCategoryInput: Category): Promise<Category> {
+    return this.repo.save(createCategoryInput)
   }
 
-  findAll() {
-    return `This action returns all categories`
+  async findAll(
+    categoryProps: CategoryQueryProps = {} as CategoryQueryProps
+  ): Promise<Category[]> {
+    return this.repo.findMany(categoryProps)
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} category`
+  async findOne(id: string): Promise<Category> {
+    return this.repo.findOneOrThrow(id)
   }
 
-  update(id: number, updateCategoryInput: UpdateCategoryInput) {
-    return `This action updates a #${id} category`
+  async update(
+    id: string,
+    updateCategoryInput: CategoryQueryProps
+  ): Promise<Category> {
+    return this.repo.update(id, updateCategoryInput)
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} category`
+  async remove(id: string): Promise<Category> {
+    return this.repo.delete(id)
+  }
+
+  async findByName(title: string): Promise<Category> {
+    return this.repo.queryByTitle(title)
   }
 }

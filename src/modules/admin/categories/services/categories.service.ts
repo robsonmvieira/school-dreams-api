@@ -1,24 +1,37 @@
 import { Injectable } from '@nestjs/common'
+import { Category } from '@modules/admin/categories/entities'
+import { CategoriesApiService } from './categories.api.service'
+import { CategoryQueryProps } from '../database'
 
 @Injectable()
 export class CategoriesService {
-  create(createCategoryInput: CreateCategoryInput) {
-    return 'This action adds a new category'
+  constructor(private categoryService: CategoriesApiService) {}
+  async create(createCategoryInput: Category): Promise<Category> {
+    return this.categoryService.create(createCategoryInput)
   }
 
-  findAll() {
-    return `This action returns all categories`
+  async findAll(
+    categoryProps: CategoryQueryProps = {} as CategoryQueryProps
+  ): Promise<Category[]> {
+    return this.categoryService.findAll(categoryProps)
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} category`
+  async findOneOrThrow(id: string): Promise<Category> {
+    return this.categoryService.findOne(id)
   }
 
-  update(id: number, updateCategoryInput: UpdateCategoryInput) {
-    return `This action updates a #${id} category`
+  async update(
+    id: string,
+    updateCategoryInput: CategoryQueryProps
+  ): Promise<Category> {
+    return this.categoryService.update(id, updateCategoryInput)
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} category`
+  async findByName(title: string): Promise<Category> {
+    return this.categoryService.findByName(title)
+  }
+
+  async remove(id: string): Promise<Category> {
+    return this.categoryService.remove(id)
   }
 }
