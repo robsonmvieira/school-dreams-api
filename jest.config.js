@@ -26,11 +26,12 @@ module.exports = {
   testRegex: '.*\\.spec\\.ts$',
   moduleFileExtensions: ['js', 'json', 'ts'],
   moduleNameMapper: {
-    '@/(.*)': '<rootDir>/src/modules/$1',
+    '@/(.*)': '<rootDir>/src/$1',
     '@root/(.*)': '<rootDir>/src/$1',
-    '@domain/(.*)': '<rootDir>/src/modules/domain/$1',
-    '@shared/(.*)': '<rootDir>/src/modules/domain/shared/$1',
-    '@infra/(.*)': '<rootDir>/src/infra/$1'
+    '@core/(.*)': '<rootDir>/src/core/$1',
+    '@infra/(.*)': '<rootDir>/src/infra/$1',
+    '@shared/(.*)': '<rootDir>/src/shared/$1',
+    '@modules/(.*)': '<rootDir>/src/modules/$1'
   }
 }
 // '@shared-core/(.*)': '<rootDir>/src/domain/shared/core/$1',
