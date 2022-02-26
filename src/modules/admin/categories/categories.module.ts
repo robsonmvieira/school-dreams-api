@@ -1,11 +1,15 @@
 import { Module } from '@nestjs/common'
-import { CategoriesResolver } from './categories.resolver'
+
 import { CategoryRepository } from './database'
+import { FindCategoriesGraphQlResolver } from '@modules/admin/categories/database/queries'
 import { CategoriesApiService, CategoriesService } from './services'
+import { PrismaService } from '@infra/factories/prisma.connection'
 
 @Module({
+  imports: [],
   providers: [
-    CategoriesResolver,
+    PrismaService,
+    FindCategoriesGraphQlResolver,
     CategoriesApiService,
     CategoriesService,
     {
