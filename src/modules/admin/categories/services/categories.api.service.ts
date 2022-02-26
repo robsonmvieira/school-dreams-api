@@ -1,6 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common'
 import { Category } from '@modules/admin/categories/entities'
-import { CategoryQueryProps, CategoryRepositoryPort } from '../database'
+import {
+  CategoryQueryProps,
+  CategoryRepositoryPort
+} from '@modules/admin/categories/database'
 
 @Injectable()
 export class CategoriesApiService {
@@ -12,10 +15,8 @@ export class CategoriesApiService {
     return this.repo.save(createCategoryInput)
   }
 
-  async findAll(
-    categoryProps: CategoryQueryProps = {} as CategoryQueryProps
-  ): Promise<Category[]> {
-    return this.repo.findMany(categoryProps)
+  async findAll(): Promise<Category[]> {
+    return this.repo.findMany()
   }
 
   async findOne(id: string): Promise<Category> {

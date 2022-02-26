@@ -6,14 +6,13 @@ import { CategoryQueryProps } from '../database'
 @Injectable()
 export class CategoriesService {
   constructor(private categoryService: CategoriesApiService) {}
+
   async create(createCategoryInput: Category): Promise<Category> {
     return this.categoryService.create(createCategoryInput)
   }
 
-  async findAll(
-    categoryProps: CategoryQueryProps = {} as CategoryQueryProps
-  ): Promise<Category[]> {
-    return this.categoryService.findAll(categoryProps)
+  async findAll(): Promise<Category[]> {
+    return this.categoryService.findAll()
   }
 
   async findOneOrThrow(id: string): Promise<Category> {
