@@ -2,6 +2,7 @@ module.exports = {
   collectCoverageFrom: [
     '<rootDir>/tests/**/*.ts',
     '**/tests/**',
+    '<rootDir>/tests/modules/*.spec.ts',
     '<rootDir>/tests/**/*.spec.ts',
     '<rootDir>/**/*.spec.ts',
     '<rootDir>/tests/**/*.test.ts',
