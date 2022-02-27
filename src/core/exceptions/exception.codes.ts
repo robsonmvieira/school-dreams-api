@@ -4,5 +4,6 @@ export enum ExceptionCodes {
   argumentNotProvided = 'GENERIC.ARGUMENT_NOT_PROVIDED',
   badRequest = 'GENERIC.BAD_REQUEST',
   notFound = 'GENERIC.NOT_FOUND',
-  conflict = 'GENERIC.CONFLICT'
+  conflict = 'GENERIC.CONFLICT',
+  notContent = 'GENERIC.NOT_CONTENT'
 }
