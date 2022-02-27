@@ -5,31 +5,57 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## 🎯 Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+The **School Dreams APi** is a project to management school functionality such as Students, teachers, employees, suppliers.
+
+This project is agnostic GraphQl but if you need a front-end you may clone [School Admin Front-end](https://github.com/robsonmvieira/school-admin)
+## Some highlight Points
+
+- Unit Testing
+- Hexagonal architecture
+- Adapter patterns
+- Repository patterns
+
+
+## Technologies
+
+ The project is using the follow technologies:
+
+- [Nest](https://github.com/nestjs/nest)
+- [Jest](https://jestjs.io/)
+- [GraphQl](https://graphql.org/)
+- [Docker](https://www.docker.com/)
+- [Postgres](https://www.postgresql.org/)
+- [Prisma](https://www.prisma.io/)
+
+
+
+## Disclaime
+  As i Told above, the project using relational Database then you need provide this in your local machine either using Docker or installed.
+
+## Clone
+```bash
+  # cloning the project
+  $ git clone https://github.com/robsonmvieira/school-dreams-api
+```
 
 ## Installation
-
 ```bash
-$ npm install
+  # install dependencies
+  $ yarn
+```
+## Docker-compose
+```bash
+  # Creating container with services
+  $ docker-compose up -d
+```
+
+## Run Prisma Migration
+```bash
+  # Run migrations
+  $ npx prisma migrate dev
 ```
 
 ## Running the app
@@ -43,6 +69,12 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
+```
+
+## GraphQl playground
+```bash
+# testing queries and mutations
+$ http://localhost:8000/graphql
 ```
 
 ## Test
