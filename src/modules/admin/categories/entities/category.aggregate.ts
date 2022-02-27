@@ -19,8 +19,8 @@ export class CategoryAggregate extends AggregateRoot<CategoryAggregateProps> {
     return this.props.title
   }
 
-  get PlainProps(): string {
-    return JSON.stringify(this.props)
+  get plainProps(): object {
+    return { id: this.id.toValue(), title: this.title }
   }
 
   get categoryId(): string | number {
