@@ -37,6 +37,7 @@ type Parent {
 
 type Query {
   findAllCategories: [CategoryType!]!
+  findCategoryByTitle(data: String!): CategoryType!
   permissions: [Permission!]!
   permission(id: Int!): Permission!
   roles: [Role!]!
@@ -46,7 +47,7 @@ type Query {
 }
 
 type Mutation {
-  createCategory(categoryInput: CreateCategoryInput!): CategoryType!
+  CreateNewCategory(categoryInput: CreateCategoryInput!): CategoryType!
   createPermission(createPermissionInput: CreatePermissionInput!): Permission!
   updatePermission(updatePermissionInput: UpdatePermissionInput!): Permission!
   removePermission(id: Int!): Permission!
