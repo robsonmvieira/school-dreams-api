@@ -6,6 +6,13 @@
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
 
+# Topics
+- [Description](#-description)
+- [Technologies](#-technologies)
+- [Clone](#-clone)
+- [Tests](#-tests)
+
+
 ## 🎯 Description
 
 The **School Dreams APi** is a project to management school functionality such as Students, teachers, employees, suppliers.
@@ -18,7 +25,7 @@ This project is agnostic GraphQl but if you need a front-end you may clone [Scho
 - Adapter patterns
 - Repository patterns
 
-
+---
 ## Technologies
 
  The project is using the follow technologies:
@@ -31,7 +38,7 @@ This project is agnostic GraphQl but if you need a front-end you may clone [Scho
 - [Prisma](https://www.prisma.io/)
 
 
-
+---
 ## Disclaime
   As i Told above, the project using relational Database then you need provide this in your local machine either using Docker or installed.
 
@@ -77,7 +84,7 @@ $ npm run start:prod
 $ http://localhost:8000/graphql
 ```
 
-## Test
+## Tests
 
 ```bash
 # unit tests
@@ -93,12 +100,6 @@ $ npm run test:cov
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
