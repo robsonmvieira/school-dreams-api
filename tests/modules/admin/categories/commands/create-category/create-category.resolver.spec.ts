@@ -27,7 +27,6 @@ describe('FindCategoriesGraphQlResolver', () => {
     resolver = module.get<CreateCategoryGraphQlResolver>(
       CreateCategoryGraphQlResolver
     )
-    service = module.get<CategoriesService>(CategoriesService)
   })
 
   it('should be defined', () => {
