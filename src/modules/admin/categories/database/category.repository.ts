@@ -1,3 +1,4 @@
+import { ConflictException } from '@core/exceptions/conflict.exception'
 import { PrismaService } from '@infra/factories/prisma.connection'
 import { Category } from '@modules/admin/categories/entities'
 import { Injectable } from '@nestjs/common'
@@ -19,6 +20,11 @@ export class CategoryRepository implements CategoryRepositoryPort {
   }
 
   async save(payload: Category): Promise<Category> {
+    const categoryExists = await this.findByName(payload.title)
+
+    if (categoryExists) {
+      throw new ConflictException('Category name already exists')
+    }
     return this.source.category.create({
       data: {
         id: payload.id,
