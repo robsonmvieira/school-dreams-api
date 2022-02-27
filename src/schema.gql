@@ -1,0 +1,97 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type CategoryType {
+  id: ID!
+
+  """Created At"""
+  createdAt: DateTime!
+
+  """Update At"""
+  updatedAt: DateTime!
+
+  """Category Title"""
+  title: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Permission {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Role {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Parent {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Query {
+  findAllCategories: [CategoryType!]!
+  permissions: [Permission!]!
+  permission(id: Int!): Permission!
+  roles: [Role!]!
+  role(id: Int!): Role!
+  parents: [Parent!]!
+  parent(id: Int!): Parent!
+}
+
+type Mutation {
+  createCategory(categoryInput: CreateCategoryInput!): CategoryType!
+  createPermission(createPermissionInput: CreatePermissionInput!): Permission!
+  updatePermission(updatePermissionInput: UpdatePermissionInput!): Permission!
+  removePermission(id: Int!): Permission!
+  createRole(createRoleInput: CreateRoleInput!): Role!
+  updateRole(updateRoleInput: UpdateRoleInput!): Role!
+  removeRole(id: Int!): Role!
+  createParent(createParentInput: CreateParentInput!): Parent!
+  updateParent(updateParentInput: UpdateParentInput!): Parent!
+  removeParent(id: Int!): Parent!
+}
+
+input CreateCategoryInput {
+  """Example field (placeholder)"""
+  title: String!
+}
+
+input CreatePermissionInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdatePermissionInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateRoleInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateRoleInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateParentInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateParentInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
