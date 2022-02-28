@@ -46,7 +46,6 @@ describe('FindCategoryByTitleGraphQlResolver', () => {
     })
     await resolver.findByTitle('').catch((exception) => {
       expect(exception).toBeInstanceOf(NotContentException)
-      console.log(exception.message)
       expect(exception).toMatchObject({
         message: 'Not content found'
       })
