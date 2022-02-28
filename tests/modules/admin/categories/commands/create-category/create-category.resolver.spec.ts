@@ -1,12 +1,10 @@
-import { Category } from '@modules/admin/categories/entities'
 import { CategoriesService } from '@modules/admin/categories/services'
 import { Test, TestingModule } from '@nestjs/testing'
 import { CreateCategoryGraphQlResolver } from '@modules/admin/categories/commands/create-category'
 import { ConflictException } from '@core/exceptions/conflict.exception'
 
-describe('FindCategoriesGraphQlResolver', () => {
+describe('CreteCategoryGraphQlResolver', () => {
   let resolver: CreateCategoryGraphQlResolver
-  let service: CategoriesService
 
   const mockedService = {
     create: jest.fn(),
@@ -33,7 +31,7 @@ describe('FindCategoriesGraphQlResolver', () => {
     expect(resolver).toBeDefined()
   })
 
-  it('should save new category categories', async () => {
+  it('should save new category', async () => {
     const mockResult = {
       id: 'any_id',
       title: 'any_title',
