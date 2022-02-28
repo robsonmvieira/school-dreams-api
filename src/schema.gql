@@ -49,6 +49,7 @@ type Query {
 
 type Mutation {
   CreateNewCategory(categoryInput: CreateCategoryInput!): CategoryType!
+  deleteCategory(categoryId: String!): CategoryType!
   createPermission(createPermissionInput: CreatePermissionInput!): Permission!
   updatePermission(updatePermissionInput: UpdatePermissionInput!): Permission!
   removePermission(id: Int!): Permission!

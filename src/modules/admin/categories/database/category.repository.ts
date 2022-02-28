@@ -2,7 +2,7 @@ import { NotContentException, NotFoundException } from '@core/exceptions'
 import { ConflictException } from '@core/exceptions/conflict.exception'
 import { PrismaService } from '@infra/factories/prisma.connection'
 import { Category } from '@modules/admin/categories/entities'
-import { Injectable } from '@nestjs/common'
+import { Injectable, InternalServerErrorException } from '@nestjs/common'
 import {
   CategoryQueryProps,
   CategoryRepositoryPort
@@ -60,6 +60,14 @@ export class CategoryRepository implements CategoryRepositoryPort {
   }
 
   async delete(id: string): Promise<Category> {
-    return this.source.category.delete({ where: { id } })
+    const result = await this.findOneOrThrow(id)
+
+    if (result) {
+      try {
+        return this.source.category.delete({ where: { id } })
+      } catch (error) {
+        throw new InternalServerErrorException('Something went wrong.')
+      }
+    }
   }
 }

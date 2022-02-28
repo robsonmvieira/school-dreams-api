@@ -10,6 +10,7 @@ import {
 } from '@modules/admin/categories/services'
 import { PrismaService } from '@infra/factories/prisma.connection'
 import { CreateCategoryGraphQlResolver } from '@modules/admin/categories/commands/create-category'
+import { DeleteCategoryGraphQlResolver } from '@modules/admin/categories/commands/delete-category'
 
 @Module({
   imports: [],
@@ -21,6 +22,7 @@ import { CreateCategoryGraphQlResolver } from '@modules/admin/categories/command
     CreateCategoryGraphQlResolver,
     CategoriesApiService,
     CategoriesService,
+    DeleteCategoryGraphQlResolver,
     {
       provide: 'CategoryRepositoryPort',
       useClass: CategoryRepository
