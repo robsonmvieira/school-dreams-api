@@ -23,6 +23,10 @@ export class CategoriesApiService {
     return this.repo.findOneOrThrow(id)
   }
 
+  async findByName(title: string): Promise<Category> {
+    return this.repo.queryByTitle(title)
+  }
+
   async update(
     id: string,
     updateCategoryInput: CategoryQueryProps
@@ -32,9 +36,5 @@ export class CategoriesApiService {
 
   async remove(id: string): Promise<Category> {
     return this.repo.delete(id)
-  }
-
-  async findByName(title: string): Promise<Category> {
-    return this.repo.queryByTitle(title)
   }
 }
