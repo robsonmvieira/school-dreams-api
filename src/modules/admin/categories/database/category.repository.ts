@@ -1,8 +1,8 @@
-import { NotContentException } from '@core/exceptions'
+import { NotContentException, NotFoundException } from '@core/exceptions'
 import { ConflictException } from '@core/exceptions/conflict.exception'
 import { PrismaService } from '@infra/factories/prisma.connection'
 import { Category } from '@modules/admin/categories/entities'
-import { Injectable, NotFoundException } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import {
   CategoryQueryProps,
   CategoryRepositoryPort

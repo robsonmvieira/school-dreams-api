@@ -19,7 +19,7 @@ import { GraphQLError } from 'graphql'
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       formatError: (error: GraphQLError) => {
         const graphQLFormattedError: any = {
-          message: error?.extensions
+          message: error?.extensions.exception
         }
         return graphQLFormattedError
       }
