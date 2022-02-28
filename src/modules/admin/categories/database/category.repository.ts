@@ -1,4 +1,4 @@
-import { NotContentException } from '@core/exceptions'
+import { NotContentException, NotFoundException } from '@core/exceptions'
 import { ConflictException } from '@core/exceptions/conflict.exception'
 import { PrismaService } from '@infra/factories/prisma.connection'
 import { Category } from '@modules/admin/categories/entities'
@@ -39,7 +39,12 @@ export class CategoryRepository implements CategoryRepositoryPort {
   }
 
   async findOneOrThrow(id: string): Promise<Category> {
-    return this.source.category.findFirst({ where: { id } })
+    const category = await this.source.category.findFirst({ where: { id } })
+
+    if (!category) {
+      throw new NotFoundException('Category not found')
+    }
+    return category
   }
 
   async update(

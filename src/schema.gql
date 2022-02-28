@@ -38,6 +38,7 @@ type Parent {
 type Query {
   findAllCategories: [CategoryType!]!
   findCategoryByTitle(data: String!): CategoryType!
+  findCategoryById(data: String!): CategoryType!
   permissions: [Permission!]!
   permission(id: Int!): Permission!
   roles: [Role!]!

@@ -1,7 +1,9 @@
-export abstract class ExceptionBase extends Error {
+import { HttpException } from '@nestjs/common'
+
+export abstract class ExceptionBase extends HttpException {
   abstract code: string
-  abstract statusNumber: number
-  constructor(message: string, readonly metadata?: unknown) {
-    super(message)
+  constructor(message: string, status: number) {
+    super(message, status)
+    // Error.captureStackTrace(this, this.constructor)
   }
 }
