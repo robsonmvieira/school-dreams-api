@@ -14,11 +14,11 @@ class UpdateCategoryGraphQlResolver {
   ): Promise<Category> {
     const mockResult = {
       id: 'any_id',
-      title: 'any_title',
+      title: 'new title',
       createdAt: new Date(),
       updatedAt: new Date()
     }
-    return
+    return mockResult
   }
 }
 
