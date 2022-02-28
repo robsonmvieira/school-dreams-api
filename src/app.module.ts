@@ -9,12 +9,20 @@ import { AdminModule } from '@modules/admin/admin.module'
 import { ClientModule } from '@modules/client/client.module'
 import { ParentsModule } from '@modules/parents/parents.module'
 import { StudentModule } from '@modules/student/student.module'
+import { GraphQLError } from 'graphql'
 
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql')
+      debug: false,
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      formatError: (error: GraphQLError) => {
+        const graphQLFormattedError: any = {
+          message: error?.extensions
+        }
+        return graphQLFormattedError
+      }
     }),
     AdminModule,
     ClientModule,
