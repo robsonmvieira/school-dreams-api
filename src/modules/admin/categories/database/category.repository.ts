@@ -51,23 +51,34 @@ export class CategoryRepository implements CategoryRepositoryPort {
     id: string,
     updateCategoryInput: CategoryQueryProps
   ): Promise<Category> {
-    return this.source.category.update({
+    await this.findOrThrowNotFoundException(id)
+
+    const result = await this.source.category.update({
       where: { id },
       data: {
         ...updateCategoryInput
       }
     })
+
+    return result
   }
 
   async delete(id: string): Promise<Category> {
-    const result = await this.findOneOrThrow(id)
+    await this.findOrThrowNotFoundException(id)
 
-    if (result) {
-      try {
-        return this.source.category.delete({ where: { id } })
-      } catch (error) {
-        throw new InternalServerErrorException('Something went wrong.')
-      }
+    try {
+      return this.source.category.delete({ where: { id } })
+    } catch (error) {
+      throw new InternalServerErrorException('Something went wrong.')
     }
+  }
+
+  private async findOrThrowNotFoundException(id: string): Promise<Category> {
+    const categoryExists = await this.findOneOrThrow(id)
+
+    if (!categoryExists) {
+      throw new NotFoundException('Category not found')
+    }
+    return categoryExists
   }
 }

@@ -49,6 +49,7 @@ type Query {
 
 type Mutation {
   CreateNewCategory(categoryInput: CreateCategoryInput!): CategoryType!
+  updateCategory(id: String!, payload: UpdateCategoryInput!): CategoryType!
   deleteCategory(categoryId: String!): CategoryType!
   createPermission(createPermissionInput: CreatePermissionInput!): Permission!
   updatePermission(updatePermissionInput: UpdatePermissionInput!): Permission!
@@ -63,6 +64,10 @@ type Mutation {
 
 input CreateCategoryInput {
   """Example field (placeholder)"""
+  title: String!
+}
+
+input UpdateCategoryInput {
   title: String!
 }
 

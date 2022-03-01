@@ -1,6 +1,6 @@
 import { CategoriesService } from '@modules/admin/categories/services'
 import { Test, TestingModule } from '@nestjs/testing'
-import { DeleteCategoryGraphQlResolver } from '@modules/admin/categories/commands/delete-category'
+import { DeleteCategoryGraphQlResolver } from '@modules/admin/categories/commands'
 import { NotFoundException } from '@core/exceptions'
 import { InternalServerErrorException } from '@nestjs/common'
 
@@ -60,6 +60,17 @@ describe('DeleteCategoryGraphQlResolver', () => {
 
     await resolver.deleteCategory('wrong_id').catch((exception) => {
       expect(exception).toBeInstanceOf(InternalServerErrorException)
+    })
+  })
+
+  it('should throw if NotFoundException if category not found', async () => {
+    mockedService.remove.mockImplementation(() => {
+      throw new NotFoundException('Category not found')
+    })
+
+    await resolver.deleteCategory('invalid_id').catch((exception) => {
+      expect(exception).toBeInstanceOf(NotFoundException)
+      expect(exception.response).toBe('Category not found')
     })
   })
 })

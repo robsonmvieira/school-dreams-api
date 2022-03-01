@@ -1,5 +1,5 @@
 import { NotFoundException } from '@core/exceptions'
-import { FindCategoryByIdGraphQlResolver } from '@modules/admin/categories/queries/find-by-id'
+import { FindCategoryByIdGraphQlResolver } from '@modules/admin/categories/queries'
 import { CategoriesService } from '@modules/admin/categories/services'
 import { Test, TestingModule } from '@nestjs/testing'
 
