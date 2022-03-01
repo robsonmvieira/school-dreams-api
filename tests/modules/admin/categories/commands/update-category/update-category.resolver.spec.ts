@@ -1,26 +1,7 @@
 import { CategoriesService } from '@modules/admin/categories/services'
 import { Test, TestingModule } from '@nestjs/testing'
-import { CreateCategoryGraphQlResolver } from '@modules/admin/categories/commands/create-category'
-import { ConflictException } from '@core/exceptions/conflict.exception'
-import { Category } from '@modules/admin/categories/entities'
-
-class UpdateCategoryDTO {
-  title: string
-}
-class UpdateCategoryGraphQlResolver {
-  async updateCategory(
-    id: string,
-    payload: UpdateCategoryDTO
-  ): Promise<Category> {
-    const mockResult = {
-      id: 'any_id',
-      title: 'new title',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }
-    return mockResult
-  }
-}
+import { UpdateCategoryGraphQlResolver } from '@modules/admin/categories/commands'
+import { NotFoundException } from '@core/exceptions'
 
 describe('UpdateCategoryGraphQlResolver', () => {
   let resolver: UpdateCategoryGraphQlResolver
@@ -55,34 +36,31 @@ describe('UpdateCategoryGraphQlResolver', () => {
     expect(resolver).toBeDefined()
   })
 
-  it('should save new category', async () => {
+  it('should edit category with correct params ', async () => {
     const mockResult = {
       id: 'any_id',
-      title: 'valid_id',
+      title: 'new title',
       createdAt: new Date(),
       updatedAt: new Date()
     }
     mockedService.update.mockImplementation(() => {
       return mockResult
     })
-    const result = await resolver.updateCategory('valid_id', {
-      title: 'new title'
-    })
+    const result = await resolver.update('valid_id', { title: 'new title' })
+
     expect(result.title).toEqual('new title')
   })
 
-  // it('should throw if category title is already exists', async () => {
-  //   const mockResult = {
-  //     id: 'any_id',
-  //     title: 'any_title',
-  //     createdAt: new Date(),
-  //     updatedAt: new Date()
-  //   }
-  //   mockedService.create.mockReturnValue(mockResult)
-  //   await resolver.createCategory(mockResult)
+  it('should throw if NotFoundException if category not found', async () => {
+    mockedService.update.mockImplementation(() => {
+      throw new NotFoundException('Category not found')
+    })
 
-  //   await resolver.createCategory(mockResult).catch((exception) => {
-  //     expect(exception).toBeInstanceOf(ConflictException)
-  //   })
-  // })
+    await resolver
+      .update('invalid_id', { title: 'new title' })
+      .catch((exception) => {
+        expect(exception).toBeInstanceOf(NotFoundException)
+        expect(exception.response).toBe('Category not found')
+      })
+  })
 })
