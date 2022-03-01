@@ -1,16 +1,21 @@
 import { Module } from '@nestjs/common'
 
 import { CategoryRepository } from './database'
-import { FindCategoriesGraphQlResolver } from '@modules/admin/categories/queries/find-categories'
-import { FindCategoryByTitleGraphQlResolver } from '@modules/admin/categories/queries/find-by-title'
-import { FindCategoryByIdGraphQlResolver } from '@modules/admin/categories/queries/find-by-id'
+import {
+  FindCategoriesGraphQlResolver,
+  FindCategoryByTitleGraphQlResolver,
+  FindCategoryByIdGraphQlResolver
+} from '@modules/admin/categories/queries'
 import {
   CategoriesApiService,
   CategoriesService
 } from '@modules/admin/categories/services'
 import { PrismaService } from '@infra/factories/prisma.connection'
-import { CreateCategoryGraphQlResolver } from '@modules/admin/categories/commands/create-category'
-import { DeleteCategoryGraphQlResolver } from '@modules/admin/categories/commands/delete-category'
+import {
+  CreateCategoryGraphQlResolver,
+  UpdateCategoryGraphQlResolver,
+  DeleteCategoryGraphQlResolver
+} from '@modules/admin/categories/commands'
 
 @Module({
   imports: [],
@@ -20,6 +25,7 @@ import { DeleteCategoryGraphQlResolver } from '@modules/admin/categories/command
     FindCategoryByTitleGraphQlResolver,
     FindCategoryByIdGraphQlResolver,
     CreateCategoryGraphQlResolver,
+    UpdateCategoryGraphQlResolver,
     CategoriesApiService,
     CategoriesService,
     DeleteCategoryGraphQlResolver,

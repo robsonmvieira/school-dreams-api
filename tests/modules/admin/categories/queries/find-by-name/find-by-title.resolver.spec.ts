@@ -1,5 +1,5 @@
 import { NotContentException } from '@core/exceptions'
-import { FindCategoryByTitleGraphQlResolver } from '@modules/admin/categories/queries/find-by-title'
+import { FindCategoryByTitleGraphQlResolver } from '@modules/admin/categories/queries'
 import { CategoriesService } from '@modules/admin/categories/services'
 import { Test, TestingModule } from '@nestjs/testing'
 

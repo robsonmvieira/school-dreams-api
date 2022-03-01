@@ -1,6 +1,6 @@
 import { CategoriesService } from '@modules/admin/categories/services'
 import { Test, TestingModule } from '@nestjs/testing'
-import { DeleteCategoryGraphQlResolver } from '@modules/admin/categories/commands/delete-category'
+import { DeleteCategoryGraphQlResolver } from '@modules/admin/categories/commands'
 import { NotFoundException } from '@core/exceptions'
 import { InternalServerErrorException } from '@nestjs/common'
 

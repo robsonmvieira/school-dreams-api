@@ -1,5 +1,5 @@
 import { Category } from '@modules/admin/categories/entities'
-import { FindCategoriesGraphQlResolver } from '@modules/admin/categories/queries/find-categories'
+import { FindCategoriesGraphQlResolver } from '@modules/admin/categories/queries'
 import { CategoriesService } from '@modules/admin/categories/services'
 import { Test, TestingModule } from '@nestjs/testing'
 

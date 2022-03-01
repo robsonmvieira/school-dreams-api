@@ -1,6 +1,6 @@
 import { CategoriesService } from '@modules/admin/categories/services'
 import { Test, TestingModule } from '@nestjs/testing'
-import { CreateCategoryGraphQlResolver } from '@modules/admin/categories/commands/create-category'
+import { CreateCategoryGraphQlResolver } from '@modules/admin/categories/commands'
 import { ConflictException } from '@core/exceptions/conflict.exception'
 
 describe('CreteCategoryGraphQlResolver', () => {
