@@ -3,8 +3,8 @@ import { Category } from '../entities/category.entity'
 export type CategoryQueryProps = {
   id: string
   title: string
-  createdAt: string
-  updatedAt: string
+  createdAt: Date
+  updatedAt: Date
 }
 
 export interface CategoryRepositoryPort
