@@ -62,4 +62,15 @@ describe('DeleteCategoryGraphQlResolver', () => {
       expect(exception).toBeInstanceOf(InternalServerErrorException)
     })
   })
+
+  it('should throw if NotFoundException if category not found', async () => {
+    mockedService.remove.mockImplementation(() => {
+      throw new NotFoundException('Category not found')
+    })
+
+    await resolver.deleteCategory('invalid_id').catch((exception) => {
+      expect(exception).toBeInstanceOf(NotFoundException)
+      expect(exception.response).toBe('Category not found')
+    })
+  })
 })
